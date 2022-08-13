@@ -28,6 +28,6 @@ router.use("/reactions", reactionApi);
 
 // friendApi
 const friendApi = require("./friend.api");
-router.use("/friends  ", friendApi);
+router.use("/friends", friendApi);
 
 module.exports = router;

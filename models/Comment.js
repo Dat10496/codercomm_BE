@@ -7,7 +7,7 @@ const commentSchema = Schema(
     author: { type: Schema.Types.ObjectId, required: true, ref: "User" },
     post: { type: Schema.Types.ObjectId, required: true, ref: "Post" },
 
-    reaction: {
+    reactions: {
       like: { type: Number, default: 0 },
       dislike: { type: Number, default: 0 },
     },

@@ -9,7 +9,7 @@ const postSchema = Schema(
 
     isDeleted: { type: Boolean, default: false, select: false },
     commentCount: { type: Number, default: 0 },
-    reaction: {
+    reactions: {
       like: { type: Number, default: 0 },
       dislike: { type: Number, default: 0 },
     },

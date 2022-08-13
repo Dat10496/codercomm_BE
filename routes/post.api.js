@@ -9,6 +9,7 @@ const {
   getSinglePost,
   getPosts,
   deleteSinglePost,
+  getCommentsOfPost,
 } = require("../controllers/post.controllers");
 
 /**
@@ -77,4 +78,10 @@ router.get(
  * @description Get comments
  * @access Login required
  **/
+router.get(
+  "/:id/comments",
+  loginRequired,
+  validate([param("id").exists().isString().custom(checkObjectId)]),
+  getCommentsOfPost
+);
 module.exports = router;
