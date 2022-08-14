@@ -78,7 +78,7 @@ reactionControllers.saveReaction = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { reactions },
+    reactions,
     false,
     "Save Reaction successfully"
   );

@@ -53,14 +53,7 @@ postControllers.updateSinglePost = catchAsync(async (req, res, next) => {
 
   await post.save();
 
-  return sendResponse(
-    res,
-    200,
-    true,
-    { post },
-    false,
-    "Update Post successfully"
-  );
+  return sendResponse(res, 200, true, post, false, "Update Post successfully");
 });
 
 postControllers.getSinglePost = catchAsync(async (req, res, next) => {
@@ -72,7 +65,7 @@ postControllers.getSinglePost = catchAsync(async (req, res, next) => {
   post = post.toJSON();
   post.comments = await Comment.find({ post: post._id }).populate("author");
 
-  return sendResponse(res, 200, true, { post }, false, "Get Post successfully");
+  return sendResponse(res, 200, true, post, false, "Get Post successfully");
 });
 
 postControllers.getPosts = catchAsync(async (req, res, next) => {
@@ -141,14 +134,7 @@ postControllers.deleteSinglePost = catchAsync(async (req, res, next) => {
 
   calculatePostCount(currentUserId);
 
-  return sendResponse(
-    res,
-    200,
-    true,
-    { post },
-    false,
-    "Update Post successfully"
-  );
+  return sendResponse(res, 200, true, post, false, "Update Post successfully");
 });
 
 postControllers.getCommentsOfPost = catchAsync(async (req, res, next) => {
@@ -167,6 +153,7 @@ postControllers.getCommentsOfPost = catchAsync(async (req, res, next) => {
   const totalPages = Math.ceil(count / limit);
   const offset = limit * (page - 1);
   const comments = await Comment.find({ post: postId })
+    .populate("author")
     .sort({ createdAt: -1 })
     .skip(offset)
     .limit(limit);

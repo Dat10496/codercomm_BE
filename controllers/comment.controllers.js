@@ -66,7 +66,7 @@ commentControllers.updateSingleComment = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { comment },
+    comment,
     false,
     "Update single Comment successfully"
   );
@@ -95,7 +95,7 @@ commentControllers.deleteSingleComment = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { comment },
+    comment,
     false,
     "Delete single Comment successfully"
   );
@@ -113,7 +113,7 @@ commentControllers.getSingleComment = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { comment },
+    comment,
     false,
     "Get Comment successfully"
   );

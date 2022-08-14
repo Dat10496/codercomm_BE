@@ -72,7 +72,7 @@ userControllers.getUsers = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { users: usersWithFriendShip, totalPages, count },
+    { users, usersWithFriendShip, totalPages, count },
     false,
     ""
   );
@@ -89,7 +89,7 @@ userControllers.getCurrentUser = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { user },
+    user,
     false,
     "Get current user successfully"
   );
@@ -114,7 +114,7 @@ userControllers.getSingleUser = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { user },
+    user,
     false,
     "Get single user successfully"
   );
@@ -153,14 +153,7 @@ userControllers.updateProfile = catchAsync(async (req, res, next) => {
 
   await user.save();
 
-  return sendResponse(
-    res,
-    200,
-    true,
-    { user },
-    false,
-    "Update user successfully"
-  );
+  return sendResponse(res, 200, true, user, false, "Update user successfully");
 });
 
 module.exports = userControllers;
