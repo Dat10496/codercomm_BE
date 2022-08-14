@@ -1,5 +1,7 @@
 # codercomm
 
+    CoderComm is a social network. In this app, you can create an account, update your private information like: (name, avatarUrl, coverUrl, aboutMe, city, country, company, jobTitle, facebookLink, instagramLink, linkedinLink, twitterLink). You can make friend to other people, post a status,... like or dislike and comment this status
+
 ## User stories
 
 ### Authentication
