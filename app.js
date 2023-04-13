@@ -1,5 +1,5 @@
-var express = require("express");
 require("dotenv").config();
+var express = require("express");
 const cors = require("cors");
 const { sendResponse, AppError } = require("./helpers/utils");
 
@@ -21,11 +21,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api", indexRouter);
 
 const mongoose = require("mongoose");
-const mongoUri = process.env.MONGO_URI;
+const mongoUri = `mongodb+srv://datvo:${process.env.PASSWORD_DB}@cluster0.dvta5t1.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose
   .connect(mongoUri)
-  .then(() => console.log(`connected ${mongoUri}`))
+  .then(() => console.log(`connected DB`))
   .catch((err) => console.log(err, "err connect mongoose"));
 
 //   Error handlers

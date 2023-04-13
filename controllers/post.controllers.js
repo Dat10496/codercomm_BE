@@ -75,10 +75,10 @@ postControllers.getPosts = catchAsync(async (req, res, next) => {
   let user = await User.findById(userId);
   if (!user) throw new AppError(400, "User not found", "Get Post error");
 
-  let { limit, page } = { ...req.query };
+  let { limit, page, a } = { ...req.query };
   page = parseInt(page) || 1;
   limit = parseInt(limit) || 10;
-
+  console.log(req.query, a);
   let userFriendIDs = await Friend.find({
     $or: [{ from: userId }, { to: userId }],
     status: "accepted",
