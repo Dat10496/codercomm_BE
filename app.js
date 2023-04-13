@@ -24,7 +24,9 @@ const mongoose = require("mongoose");
 const mongoUri = process.env.MONGO_URI;
 
 mongoose
-  .connect(mongoUri)
+  .connect(
+    "mongodb+srv://datvo:vfoZviAmDBXks5oI@cluster0.dvta5t1.mongodb.net/test"
+  )
   .then(() => console.log("connected DB"))
   .catch((err) => console.log(err, "err connect mongoose"));
 
