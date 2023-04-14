@@ -275,7 +275,7 @@ friendControllers.reactFriendRequest = catchAsync(async (req, res, next) => {
 
   if (friend.status === "accepted") {
     await calculateFriendCount(currentUserId);
-    await calculateFriendCount(toUserId);
+    await calculateFriendCount(fromUserId);
   }
 
   return sendResponse(
