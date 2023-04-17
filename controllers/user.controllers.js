@@ -128,7 +128,9 @@ userControllers.updateProfile = catchAsync(async (req, res, next) => {
     throw new AppError(400, "Permission required", "Update User error");
 
   let user = await User.findById(userId);
-  if (!user) throw new AppError(400, "User not found", "Update User error");
+
+  if (!user)
+    throw new AppError(404, "Account not found", "Update Profile Error");
 
   const allows = [
     "name",
@@ -136,24 +138,29 @@ userControllers.updateProfile = catchAsync(async (req, res, next) => {
     "coverUrl",
     "aboutMe",
     "city",
-    "company",
     "country",
+    "company",
     "jobTitle",
     "facebookLink",
     "instagramLink",
     "linkedinLink",
     "twitterLink",
   ];
-
   allows.forEach((field) => {
-    if (req.body[field] !== "undefined") {
+    if (req.body[field] !== undefined) {
       user[field] = req.body[field];
     }
   });
 
   await user.save();
-
-  return sendResponse(res, 200, true, user, false, "Update user successfully");
+  return sendResponse(
+    res,
+    200,
+    true,
+    user,
+    null,
+    "Update Profile successfully"
+  );
 });
 
 module.exports = userControllers;
